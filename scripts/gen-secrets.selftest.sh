@@ -40,7 +40,8 @@ echo "[1] fresh generation"
 [ -f "${ENV_FILE}" ] && rm -f "${ENV_FILE}"
 if bash "${GEN}" >/dev/null 2>&1; then ok "gen-secrets.sh exits 0 on a fresh run"; else bad "gen-secrets.sh failed on fresh run"; fi
 if [ -f "${ENV_FILE}" ]; then ok ".env created from template"; else bad ".env was not created"; fi
-assert_eq "600" "$(stat -c '%a' "${ENV_FILE}")" ".env permissions are 600"
+if stat -c "%a" "${ENV_FILE}" >/dev/null 2>&1; then ENV_MODE="$(stat -c "%a" "${ENV_FILE}")"; else ENV_MODE="$(stat -f "%Lp" "${ENV_FILE}")"; fi
+assert_eq "600" "${ENV_MODE}" ".env permissions are 600"
 
 # No placeholders remain in actual KEY=VALUE lines (comments are ignored).
 if grep -E '^[A-Za-z0-9_]+=.*__GENERATED__' "${ENV_FILE}" >/dev/null 2>&1; then

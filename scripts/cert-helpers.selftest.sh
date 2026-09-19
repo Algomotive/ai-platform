@@ -48,7 +48,7 @@ run() { # <extra-env...> -- <script> [args]
   local envs=()
   while [ "$1" != "--" ]; do envs+=("$1"); shift; done
   shift
-  env "${envs[@]}" ENV_FILE="${ENVF}" PATH="${MOCKBIN}:${PATH}" bash "$@" >"${OUT}" 2>&1
+  env ${envs[@]+"${envs[@]}"} ENV_FILE="${ENVF}" PATH="${MOCKBIN}:${PATH}" bash "$@" >"${OUT}" 2>&1
 }
 
 # --- assertion harness -------------------------------------------------------

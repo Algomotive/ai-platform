@@ -42,7 +42,7 @@ run_waitfor() { # <env-assignments...> -- <wait-for args...>
   local envs=()
   while [ "$1" != "--" ]; do envs+=("$1"); shift; done
   shift
-  env "${envs[@]}" ENV_FILE="${ENVF}" PATH="${MOCKBIN}:${PATH}" \
+  env ${envs[@]+"${envs[@]}"} ENV_FILE="${ENVF}" PATH="${MOCKBIN}:${PATH}" \
     bash "${REPO}/scripts/wait-for.sh" "$@" >"${OUT}" 2>&1
 }
 

@@ -67,7 +67,7 @@ set_env() {
     # Use '|' as the sed delimiter; escape any '|' and '&' in the value.
     local esc
     esc="$(printf '%s' "$value" | sed -e 's/[\&|]/\\&/g')"
-    sed -i "s|^${key}=.*|${key}=${esc}|" "$file"
+    sed -i.bak "s|^${key}=.*|${key}=${esc}|" "$file" && rm -f "${file}.bak"
   else
     printf '%s=%s\n' "$key" "$value" >> "$file"
   fi
