@@ -19,6 +19,8 @@ COPY --chown=node:node algomotive/src/routes/Layouts/Startup.tsx \
   /app/client/src/routes/Layouts/Startup.tsx
 COPY --chown=node:node algomotive/src/components/Chat/Footer.tsx \
   /app/client/src/components/Chat/Footer.tsx
+COPY --chown=node:node algomotive/src/components/Chat/Landing.tsx \
+  /app/client/src/components/Chat/Landing.tsx
 COPY --chown=node:node algomotive/src/locales/en/translation.json \
   /app/client/src/locales/en/translation.json
 

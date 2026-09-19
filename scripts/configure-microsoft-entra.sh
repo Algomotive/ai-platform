@@ -96,6 +96,7 @@ payload = {
         "issuer": f"https://login.microsoftonline.com/{tenant}/v2.0",
         "clientAuthMethod": "client_secret_post",
         "defaultScope": "openid profile email",
+        "prompt": "select_account",
         "syncMode": "IMPORT",
         "useJwksUrl": "true",
         "validateSignature": "true",
@@ -195,6 +196,7 @@ printf '%s\n%s\n%s\n' "${client_id}" "${client_secret}" "${tenant_id}" |
       -s "config.issuer=https://login.microsoftonline.com/${new_tenant}/v2.0" \
       -s "config.clientAuthMethod=client_secret_post" \
       -s "config.defaultScope=openid profile email" \
+      -s "config.prompt=select_account" \
       -s "config.syncMode=IMPORT" \
       -s "config.useJwksUrl=true" \
       -s "config.validateSignature=true" >/dev/null
