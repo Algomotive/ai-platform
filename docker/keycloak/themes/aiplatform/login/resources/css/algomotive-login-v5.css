@@ -1,0 +1,378 @@
+:root {
+  --algo-navy-950: #06151f;
+  --algo-navy-900: #081d29;
+  --algo-navy-800: #0b2936;
+  --algo-teal-500: #30d1bd;
+  --algo-cyan-400: #4ed9f0;
+  --algo-text: #eef8fa;
+  --algo-muted: #9db4bc;
+  --algo-border: rgba(117, 214, 219, 0.22);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body.login-pf {
+  margin: 0;
+  color: var(--algo-text);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(48, 209, 189, 0.15), transparent 30%),
+    radial-gradient(circle at 86% 78%, rgba(78, 217, 240, 0.10), transparent 31%),
+    linear-gradient(135deg, #041018 0%, var(--algo-navy-950) 46%, #09232e 100%);
+  background-attachment: fixed;
+}
+
+body.login-pf::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 90%);
+}
+
+.login-pf-page.aiplatform-login,
+.login-pf-page {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(360px, 440px) minmax(440px, 520px);
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  width: min(1120px, calc(100% - 72px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.login-pf-page::before {
+  position: absolute;
+  top: 16%;
+  bottom: 16%;
+  left: 50%;
+  width: 1px;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(to bottom, transparent, rgba(48,209,189,0.20) 12%, rgba(78,217,240,0.48) 50%, rgba(48,209,189,0.20) 88%, transparent);
+  box-shadow: 0 0 18px rgba(48,209,189,0.14);
+}
+
+#kc-header {
+  width: 100%;
+  padding: 0;
+  color: var(--algo-text);
+  text-align: left;
+}
+
+#kc-header-wrapper {
+  width: 100%;
+  max-width: 440px;
+  padding: 0;
+  color: transparent;
+  font-size: 0;
+  line-height: 1;
+  text-transform: none;
+}
+
+#kc-header-wrapper::after {
+  display: block;
+  color: var(--algo-text);
+  content: "ALGOMOTIVE";
+  font-size: 25px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: 0.18em;
+}
+
+#kc-header-wrapper::before {
+  display: block;
+  max-width: 420px;
+  margin-top: 36px;
+  color: rgba(240,248,250,0.94);
+  content: "Your Business,\A Engineered to Think.";
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.025em;
+  white-space: pre-wrap;
+}
+
+#kc-content,
+#kc-content-wrapper {
+  width: 100%;
+}
+
+.login-pf-page .card-pf,
+.card-pf {
+  width: 100%;
+  max-width: 520px;
+  margin: 0;
+  padding: 36px 40px 28px;
+  color: #17313b;
+  background: rgba(252, 254, 254, 0.97);
+  border: 1px solid rgba(157, 211, 214, 0.45);
+  border-radius: 20px;
+  box-shadow: 0 28px 80px rgba(0, 8, 14, 0.42), 0 0 0 1px rgba(255,255,255,0.28) inset;
+}
+
+.login-pf-header {
+  margin-bottom: 26px;
+}
+
+#kc-page-title {
+  margin: 0;
+  color: #09232e;
+  font-size: 36px;
+  font-weight: 650;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+#kc-page-title::before {
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  content: "";
+  background:
+    linear-gradient(135deg, var(--algo-teal-500), var(--algo-cyan-400));
+  border-radius: 14px 14px 14px 5px;
+  box-shadow: 0 10px 24px rgba(48,209,189,0.28);
+}
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+.control-label,
+.pf-c-form__label-text {
+  margin-bottom: 7px;
+  color: #294650;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.form-control,
+.pf-c-form-control {
+  height: 48px;
+  padding: 10px 14px;
+  color: #102b35;
+  background: #f7fbfb;
+  border: 1px solid #c7dadd;
+  border-radius: 10px;
+  box-shadow: none;
+  font-size: 15px;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.form-control:hover,
+.pf-c-form-control:hover {
+  border-color: #8dbdc1;
+}
+
+.form-control:focus,
+.pf-c-form-control:focus {
+  background: #fff;
+  border-color: var(--algo-teal-500);
+  box-shadow: 0 0 0 3px rgba(48,209,189,0.15);
+  outline: none;
+}
+
+.pf-c-input-group {
+  border-radius: 10px;
+}
+
+.pf-c-input-group .pf-c-button,
+#kc-form-buttons .btn,
+.btn-primary,
+input[type="submit"] {
+  border-radius: 10px;
+}
+
+#kc-form-buttons {
+  margin-top: 8px;
+}
+
+#kc-form-buttons .btn-primary,
+.btn-primary,
+input[type="submit"] {
+  min-height: 48px;
+  color: #04171c;
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, var(--algo-teal-500), var(--algo-cyan-400));
+  border: 0;
+  box-shadow: 0 12px 28px rgba(48,209,189,0.24);
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+#kc-form-buttons .btn-primary:hover,
+#kc-form-buttons .btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:focus,
+input[type="submit"\]:hover,
+input[type="submit"\]:focus {
+  color: #04171c;
+  background: linear-gradient(135deg, #41dbc8, #65e1f5);
+  box-shadow: 0 15px 32px rgba(48,209,189,0.32);
+  filter: brightness(1.02);
+  transform: translateY(-1px);
+}
+
+.login-pf-settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 23px;
+  color: #547079;
+  font-size: 13px;
+}
+
+.checkbox label {
+  color: #547079;
+  font-size: 13px;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--algo-teal-500);
+}
+
+a {
+  color: #087e7b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #056963;
+  text-decoration: underline;
+}
+
+#kc-info {
+  margin: 20px 0 0;
+}
+
+#kc-info-wrapper {
+  padding: 0;
+  color: #607a82;
+  background: transparent;
+  font-size: 13px;
+}
+
+.alert {
+  margin-bottom: 20px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.card-pf::after {
+  display: block;
+  margin-top: 23px;
+  padding-top: 17px;
+  color: #6d858c;
+  content: "Protected enterprise access";
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+  border-top: 1px solid #dce8e9;
+}
+
+@media (max-width: 1180px) and (min-width: 921px) {
+  .login-pf-page.aiplatform-login,
+  .login-pf-page {
+    grid-template-columns: minmax(330px, 400px) minmax(420px, 500px);
+    gap: 72px;
+    width: calc(100% - 56px);
+  }
+}
+
+@media (max-width: 920px) {
+  body.login-pf {
+    background:
+      radial-gradient(circle at 50% 8%, rgba(48,209,189,0.15), transparent 30%),
+      linear-gradient(150deg, #041018, #09232e);
+  }
+
+  .login-pf-page.aiplatform-login,
+  .login-pf-page {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: min(100% - 32px, 560px);
+    min-height: 100vh;
+    padding: 48px 0;
+  }
+
+  .login-pf-page::before {
+    display: none;
+  }
+
+  #kc-header {
+    text-align: center;
+  }
+
+  #kc-header-wrapper {
+    max-width: none;
+  }
+
+  #kc-header-wrapper::after {
+    font-size: 21px;
+  }
+
+  #kc-header-wrapper::before {
+    max-width: 430px;
+    margin: 22px auto 0;
+    content: "Your Business, Engineered to Think.";
+    font-size: 22px;
+    white-space: normal;
+  }
+
+  .login-pf-page .card-pf,
+  .card-pf {
+    max-width: 560px;
+    padding: 32px 28px 25px;
+  }
+
+  #kc-page-title {
+    font-size: 31px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-pf-page.aiplatform-login,
+  .login-pf-page {
+    width: calc(100% - 24px);
+    padding: 30px 0;
+  }
+
+  .login-pf-page .card-pf,
+  .card-pf {
+    padding: 27px 20px 22px;
+    border-radius: 16px;
+  }
+
+  #kc-page-title {
+    font-size: 28px;
+  }
+
+  .login-pf-settings {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

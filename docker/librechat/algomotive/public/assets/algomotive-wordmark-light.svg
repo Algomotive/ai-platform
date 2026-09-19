@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 132" role="img" aria-labelledby="title description">
+  <title id="title">Algomotive AI Platform</title>
+  <desc id="description">Algomotive AI Platform full-color symbol and light wordmark.</desc>
+
+  <defs>
+    <linearGradient id="algomotive-gradient" x1="8" y1="116" x2="118" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22B573"/>
+      <stop offset="0.48" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#8B7CFF"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(4 4)">
+    <path
+      d="M60 8 116 106H92L78.5 82H41.5L28 106H4L60 8Zm0 43L50 69h20L60 51Z"
+      fill="url(#algomotive-gradient)"
+    />
+    <circle cx="60" cy="33" r="4" fill="#38BDF8"/>
+    <circle cx="28" cy="106" r="4" fill="#22B573"/>
+    <circle cx="92" cy="106" r="4" fill="#8B7CFF"/>
+    <circle cx="60" cy="69" r="6" fill="#FFFFFF"/>
+  </g>
+
+  <text
+    x="145"
+    y="70"
+    fill="#FFFFFF"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="56"
+    font-weight="800"
+    letter-spacing="-2"
+  >
+    Algomotive
+  </text>
+
+  <text
+    x="149"
+    y="103"
+    fill="#7DE3C3"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="18"
+    font-weight="700"
+    letter-spacing="4"
+  >
+    AI PLATFORM
+  </text>
+</svg>

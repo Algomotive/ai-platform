@@ -1,0 +1,148 @@
+/* Isolated final override loaded after the complete v5 theme. */
+
+html.login-pf body,
+html.login-pf > body,
+.login-pf body,
+body.login-pf {
+  min-height: 100% !important;
+  background: #06151f !important;
+  background-image:
+    radial-gradient(circle at 16% 18%, rgba(48, 209, 189, 0.18), transparent 30%),
+    radial-gradient(circle at 86% 78%, rgba(78, 217, 240, 0.12), transparent 31%),
+    linear-gradient(135deg, #041018 0%, #06151f 46%, #09232e 100%) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+/* Pseudo-elements render before and after the element content.
+   Assign the desired content directly instead of relying on flex order. */
+#kc-header-wrapper::before {
+  display: block !important;
+  max-width: none !important;
+  margin: 0 0 36px !important;
+  color: #eef8fa !important;
+  content: "ALGOMOTIVE" !important;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif !important;
+  font-size: 25px !important;
+  font-weight: 750 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.18em !important;
+  white-space: normal !important;
+}
+
+#kc-header-wrapper::after {
+  display: block !important;
+  max-width: 420px !important;
+  margin: 0 !important;
+  color: rgba(240, 248, 250, 0.94) !important;
+  content: "Your Business,\A Engineered to Think." !important;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.025em !important;
+  white-space: pre-wrap !important;
+}
+
+/* Support PatternFly and Bootstrap password-control structures. */
+.pf-c-input-group,
+.input-group {
+  display: flex !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  background: #f7fbfb !important;
+  border: 1px solid #c7dadd !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+.pf-c-input-group:focus-within,
+.input-group:focus-within {
+  background: #fff !important;
+  border-color: #30d1bd !important;
+  box-shadow: 0 0 0 3px rgba(48, 209, 189, 0.15) !important;
+}
+
+.pf-c-input-group > .form-control,
+.pf-c-input-group > .pf-c-form-control,
+.input-group > .form-control {
+  flex: 1 1 auto !important;
+  width: 1% !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.pf-c-input-group > .pf-c-button,
+.input-group > .input-group-btn > .btn,
+.input-group > .btn {
+  min-width: 64px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  background: #f7fbfb !important;
+  border: 0 !important;
+  border-left: 1px solid #d4e2e4 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Place the security label directly after the form wrapper. */
+#kc-form-wrapper::after {
+  display: block !important;
+  margin-top: 23px !important;
+  padding-top: 17px !important;
+  color: #6d858c !important;
+  content: "Protected enterprise access" !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.12em !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  border-top: 1px solid #dce8e9 !important;
+}
+
+@media (max-width: 920px) {
+  html.login-pf body,
+  html.login-pf > body,
+  .login-pf body,
+  body.login-pf {
+    background: #06151f !important;
+    background-image:
+      radial-gradient(circle at 50% 8%, rgba(48, 209, 189, 0.18), transparent 30%),
+      linear-gradient(150deg, #041018, #09232e) !important;
+  }
+
+  #kc-header-wrapper::before {
+    margin-bottom: 22px !important;
+    font-size: 21px !important;
+    text-align: center !important;
+  }
+
+  #kc-header-wrapper::after {
+    max-width: 430px !important;
+    content: "Your Business, Engineered to Think." !important;
+    font-size: 22px !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+}
+
+/* Approved Algomotive symbol replaces the temporary gradient tile. */
+#kc-page-title::before {
+  display: block !important;
+  width: 52px !important;
+  height: 52px !important;
+  margin: 0 0 18px !important;
+  content: "" !important;
+  background-color: transparent !important;
+  background-image: url("../img/algomotive-mark.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}

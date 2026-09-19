@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title description">
+  <title id="title">Algomotive AI Platform symbol</title>
+  <desc id="description">A geometric intelligence symbol formed from connected paths and a central AI core.</desc>
+  <defs>
+    <linearGradient id="algomotive-gradient" x1="14" y1="102" x2="106" y2="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22B573"/>
+      <stop offset="0.48" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#6D5EF8"/>
+    </linearGradient>
+    <filter id="core-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path
+    d="M60 10 108 94H88L76.5 74H43.5L32 94H12L60 10Zm0 37.5L51.2 63h17.6L60 47.5Z"
+    fill="url(#algomotive-gradient)"
+  />
+
+  <path
+    d="M29 84 60 30l31 54"
+    fill="none"
+    stroke="#E8F7FF"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.92"
+  />
+
+  <circle cx="60" cy="30" r="4.5" fill="#38BDF8"/>
+  <circle cx="29" cy="84" r="4.5" fill="#22B573"/>
+  <circle cx="91" cy="84" r="4.5" fill="#6D5EF8"/>
+  <circle
+    cx="60"
+    cy="63"
+    r="7"
+    fill="#FFFFFF"
+    filter="url(#core-glow)"
+  />
+</svg>

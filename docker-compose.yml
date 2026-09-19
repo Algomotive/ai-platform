@@ -550,7 +550,11 @@ services:
   # LibreChat (chat UI)
   # ---------------------------------------------------------------------------
   librechat:
-    image: ${LIBRECHAT_IMAGE}
+    build:
+      context: ./docker/librechat
+      args:
+        LIBRECHAT_IMAGE: ${LIBRECHAT_IMAGE}
+    image: aiplatform/librechat:local
     <<: [*default-restart, *hardening]
     logging: *default-logging
     environment:
@@ -583,7 +587,9 @@ services:
       OPENID_SESSION_SECRET: ${OPENID_SESSION_SECRET}
       OPENID_SCOPE: ${OPENID_SCOPE}
       OPENID_CALLBACK_URL: /oauth/openid/callback
+      APP_TITLE: ${APP_TITLE}
       OPENID_BUTTON_LABEL: ${OPENID_BUTTON_LABEL}
+      OPENID_IMAGE_URL: ${OPENID_IMAGE_URL}
       OPENID_AUTO_REDIRECT: ${OPENID_AUTO_REDIRECT}
       # Provider keys (blank disables)
       OPENAI_API_KEY: ${OPENAI_API_KEY}
