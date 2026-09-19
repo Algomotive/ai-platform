@@ -21,6 +21,8 @@ COPY --chown=node:node algomotive/src/components/Chat/Footer.tsx \
   /app/client/src/components/Chat/Footer.tsx
 COPY --chown=node:node algomotive/src/components/Chat/Landing.tsx \
   /app/client/src/components/Chat/Landing.tsx
+COPY --chown=node:node algomotive/src/components/Chat/Header.tsx \
+  /app/client/src/components/Chat/Header.tsx
 COPY --chown=node:node algomotive/src/components/UnifiedSidebar/ExpandedPanel.tsx \
   /app/client/src/components/UnifiedSidebar/ExpandedPanel.tsx
 COPY --chown=node:node algomotive/src/components/UnifiedSidebar/ConversationsSection.tsx \
