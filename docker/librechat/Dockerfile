@@ -23,6 +23,8 @@ COPY --chown=node:node algomotive/src/components/Chat/Landing.tsx \
   /app/client/src/components/Chat/Landing.tsx
 COPY --chown=node:node algomotive/src/components/UnifiedSidebar/ExpandedPanel.tsx \
   /app/client/src/components/UnifiedSidebar/ExpandedPanel.tsx
+COPY --chown=node:node algomotive/src/components/Chat/Menus/Endpoints/ModelSelector.tsx \
+  /app/client/src/components/Chat/Menus/Endpoints/ModelSelector.tsx
 COPY --chown=node:node algomotive/src/locales/en/translation.json \
   /app/client/src/locales/en/translation.json
 
