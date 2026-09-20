@@ -69,7 +69,22 @@ from lfx.custom import Component
 from lfx.io import HandleInput, MessageTextInput, Output
 from lfx.schema import Message
 
-from components.ar_common.agent_state import AgentState, Approval
+import importlib.util
+from pathlib import Path
+
+_AGENT_STATE_PATH = Path(__file__).with_name("agent_state.py")
+_AGENT_STATE_SPEC = importlib.util.spec_from_file_location(
+    "algomotive_ar_common_agent_state",
+    _AGENT_STATE_PATH,
+)
+if _AGENT_STATE_SPEC is None or _AGENT_STATE_SPEC.loader is None:
+    raise ImportError(f"Unable to load agent state module from {_AGENT_STATE_PATH}")
+
+_AGENT_STATE_MODULE = importlib.util.module_from_spec(_AGENT_STATE_SPEC)
+_AGENT_STATE_SPEC.loader.exec_module(_AGENT_STATE_MODULE)
+
+AgentState = _AGENT_STATE_MODULE.AgentState
+Approval = _AGENT_STATE_MODULE.Approval
 
 # --------------------------------------------------------------------------- #
 #  Constants — the nine subflows, their tiers (architecture §4), and the
