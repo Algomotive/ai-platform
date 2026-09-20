@@ -451,6 +451,7 @@ services:
     <<: [*default-restart, *hardening]
     logging: *default-logging
     environment:
+      NODE_EXTRA_CA_CERTS: /opt/aiplatform/certs/local-ca.pem
       DATABASE_URL: postgresql://${LANGFUSE_DB_USER}:${LANGFUSE_DB_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${LANGFUSE_DB_NAME}
       CLICKHOUSE_MIGRATION_URL: clickhouse://clickhouse:9000
       CLICKHOUSE_URL: http://clickhouse:8123
@@ -489,9 +490,15 @@ services:
       AUTH_KEYCLOAK_ISSUER: https://${AUTH_HOST}/realms/${KEYCLOAK_REALM}
       AUTH_KEYCLOAK_ALLOW_ACCOUNT_LINKING: "true"
       AUTH_DISABLE_USERNAME_PASSWORD: ${LANGFUSE_AUTH_DISABLE_PASSWORD_LOGIN}
+      LANGFUSE_MIGRATION_V4_WRITE_MODE: ${LANGFUSE_MIGRATION_V4_WRITE_MODE}
+      LANGFUSE_MIGRATION_V4_NATIVE_OTEL_BEHAVIOUR: ${LANGFUSE_MIGRATION_V4_NATIVE_OTEL_BEHAVIOUR}
+      LANGFUSE_MIGRATION_V4_ALLOW_PREVIEW_OPT_IN: ${LANGFUSE_MIGRATION_V4_ALLOW_PREVIEW_OPT_IN}
+      LANGFUSE_BACKGROUND_MIGRATION_V4_ENABLE_HISTORIC_BACKFILL: ${LANGFUSE_BACKGROUND_MIGRATION_V4_ENABLE_HISTORIC_BACKFILL}
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
     networks: [backend, edge]
+    volumes:
+      - ./local-certs/aiplatform-local-ca.pem:/opt/aiplatform/certs/local-ca.pem:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -516,6 +523,7 @@ services:
     <<: [*default-restart, *hardening]
     logging: *default-logging
     environment:
+      NODE_EXTRA_CA_CERTS: /opt/aiplatform/certs/local-ca.pem
       DATABASE_URL: postgresql://${LANGFUSE_DB_USER}:${LANGFUSE_DB_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${LANGFUSE_DB_NAME}
       CLICKHOUSE_MIGRATION_URL: clickhouse://clickhouse:9000
       CLICKHOUSE_URL: http://clickhouse:8123
@@ -532,7 +540,13 @@ services:
       SALT: ${LANGFUSE_SALT}
       ENCRYPTION_KEY: ${LANGFUSE_ENCRYPTION_KEY}
       TELEMETRY_ENABLED: ${LANGFUSE_TELEMETRY_ENABLED}
+      LANGFUSE_MIGRATION_V4_WRITE_MODE: ${LANGFUSE_MIGRATION_V4_WRITE_MODE}
+      LANGFUSE_MIGRATION_V4_NATIVE_OTEL_BEHAVIOUR: ${LANGFUSE_MIGRATION_V4_NATIVE_OTEL_BEHAVIOUR}
+      LANGFUSE_MIGRATION_V4_ALLOW_PREVIEW_OPT_IN: ${LANGFUSE_MIGRATION_V4_ALLOW_PREVIEW_OPT_IN}
+      LANGFUSE_BACKGROUND_MIGRATION_V4_ENABLE_HISTORIC_BACKFILL: ${LANGFUSE_BACKGROUND_MIGRATION_V4_ENABLE_HISTORIC_BACKFILL}
     networks: [backend]
+    volumes:
+      - ./local-certs/aiplatform-local-ca.pem:/opt/aiplatform/certs/local-ca.pem:ro
     depends_on:
       postgres:
         condition: service_healthy
