@@ -38,6 +38,46 @@ ENV LANGFLOW_CONFIG_DIR=/var/lib/langflow \
 
 EXPOSE 7860 9090
 
+# Algomotive Workflow Studio identity overlay.
+# Keep this layer limited to stable frontend entry assets. Hashed application
+# bundles remain owned by the pinned upstream Langflow image.
+COPY --chmod=0644 algomotive/favicon.ico \
+    /app/.venv/lib/python3.14/site-packages/langflow/frontend/favicon.ico
+COPY --chmod=0644 algomotive/algomotive-favicon-v1.png \
+    /app/.venv/lib/python3.14/site-packages/langflow/frontend/algomotive-favicon-v1.png
+COPY --chmod=0644 algomotive/manifest.json \
+    /app/.venv/lib/python3.14/site-packages/langflow/frontend/manifest.json
+COPY --chmod=0644 algomotive/algomotive-mark.svg \
+    /app/.venv/lib/python3.14/site-packages/langflow/frontend/assets/algomotive-mark.svg
+COPY --chmod=0644 algomotive/algomotive-wordmark-dark.svg \
+    /app/.venv/lib/python3.14/site-packages/langflow/frontend/assets/algomotive-wordmark-dark.svg
+COPY --chmod=0644 algomotive/patch_frontend.py \
+    /opt/aiplatform/patch-langflow-frontend.py
+COPY --chmod=0644 algomotive/workspace_controls.js \
+    /app/.venv/lib/python3.14/site-packages/langflow/frontend/assets/algomotive-workspace-shell-v12.js
+
+RUN python /opt/aiplatform/patch-langflow-frontend.py
+
+RUN python - <<'PY'
+from pathlib import Path
+
+index = Path(
+    "/app/.venv/lib/python3.14/site-packages/langflow/frontend/index.html"
+)
+text = index.read_text(encoding="utf-8")
+
+old = "<title>Langflow</title>"
+new = "<title>Algomotive Workflow Studio</title>"
+
+if old not in text:
+    raise RuntimeError("Expected Langflow browser title was not found")
+
+index.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+if new not in index.read_text(encoding="utf-8"):
+    raise RuntimeError("Algomotive browser title overlay was not applied")
+PY
+
 # Drop back to the non-root runtime user.
 USER 1000
 
