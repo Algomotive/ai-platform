@@ -1,0 +1,659 @@
+--- a/web/src/components/layouts/default-head/getPageMetadata.ts
++++ b/web/src/components/layouts/default-head/getPageMetadata.ts
+@@ -32,12 +32,12 @@
+
+ const selfHostedAuthPages: Record<string, PageMetadata> = {
+   "/auth/sign-in": {
+-    title: "Sign in | Langfuse",
++    title: "Sign in | Algomotive Observability",
+     description:
+-      "Sign in to Langfuse, the open source agent evals & observability platform.",
++      "Sign in to Algomotive Observability, the open source agent evals & observability platform.",
+   },
+   "/auth/sign-up": {
+-    title: "Sign up | Langfuse",
++    title: "Sign up | Algomotive Observability",
+     description: "Create a Langfuse account.",
+   },
+ };
+@@ -47,16 +47,16 @@
+ // shows the user has no password yet; that cannot be known from the route.
+ const passwordPages: Record<string, PageMetadata> = {
+   "/auth/reset-password": {
+-    title: "Reset password | Langfuse",
++    title: "Reset password | Algomotive Observability",
+     description: "Reset the password of your Langfuse account.",
+   },
+   "/auth/setup-password": {
+-    title: "Set password | Langfuse",
++    title: "Set password | Algomotive Observability",
+     description: "Set the password of your Langfuse account.",
+   },
+ };
+
+-const defaultMetadata: PageMetadata = { title: "Langfuse" };
++const defaultMetadata: PageMetadata = { title: "Algomotive Observability" };
+
+ /**
+  * Metadata that must be in the server-rendered HTML. Pages own their own
+--- a/web/src/components/nav/AppSidebar/AppSidebar.tsx
++++ b/web/src/components/nav/AppSidebar/AppSidebar.tsx
+@@ -220,6 +220,8 @@
+               logoDarkModeHref={logo.darkModeHref}
+             />
+           </Link>
++          <div className="ml-auto flex min-w-0 items-center overflow-hidden group-data-[collapsible=icon]:hidden">
++          </div>
+         </div>
+         {showDemoBadge && <DemoBadge />}
+       </SidebarHeader>
+@@ -549,7 +551,7 @@
+             <SidebarMenuButton asChild tooltip="Your Algomotive Observability Organizations">
+               <Link href="/">
+                 <Grid2X2 className="h-4 w-4" />
+-                <span>Your Langfuse Orgs</span>
++                <span>Your Algomotive Observability Orgs</span>
+               </Link>
+             </SidebarMenuButton>
+           </SidebarMenuItem>
+--- a/web/src/components/nav/topbar-brand.tsx
++++ b/web/src/components/nav/topbar-brand.tsx
+@@ -34,7 +34,7 @@
+   return (
+     <Link
+       href="/"
+-      aria-label="Langfuse home"
++      aria-label="Algomotive Observability home"
+       className={cn("flex shrink-0 items-center gap-1", className)}
+     >
+       {logoLight && logoDark ? (
+--- a/web/src/components/onboarding/DatasetsOnboarding.tsx
++++ b/web/src/components/onboarding/DatasetsOnboarding.tsx
+@@ -37,7 +37,7 @@
+   return (
+     <SplashScreen
+       title="Get Started with Datasets & Experiments"
+-      description="Datasets in Langfuse are collections of inputs (and expected outputs) for your LLM application. You can run Experiments against these datasets to test new releases before deployment to production."
++      description="Datasets in Algomotive Observability are collections of inputs (and expected outputs) for your LLM application. You can run Experiments against these datasets to test new releases before deployment to production."
+       valuePropositions={valuePropositions}
+       primaryAction={{
+         label: "Create Dataset",
+--- a/web/src/components/onboarding/PromptsOnboarding.tsx
++++ b/web/src/components/onboarding/PromptsOnboarding.tsx
+@@ -35,7 +35,7 @@
+   return (
+     <SplashScreen
+       title="Get Started with Prompt Management"
+-      description="Langfuse Prompt Management helps you centrally manage, version control, and collaboratively iterate on your prompts. Start using prompt management to improve your LLM application's performance and maintainability."
++      description="Algomotive Observability Prompt Management helps you centrally manage, version control, and collaboratively iterate on your prompts. Start using prompt management to improve your LLM application's performance and maintainability."
+       valuePropositions={valuePropositions}
+       primaryAction={{
+         label: "Create Prompt",
+--- a/web/src/components/onboarding/ScoresOnboarding.tsx
++++ b/web/src/components/onboarding/ScoresOnboarding.tsx
+@@ -27,7 +27,7 @@
+     {
+       title: "Use custom metrics",
+       description:
+-        "Langfuse's scores are flexible and can be used to track any metric that's associated with an LLM application",
++        "Algomotive Observability's scores are flexible and can be used to track any metric that's associated with an LLM application",
+       icon: Code,
+     },
+   ];
+--- a/web/src/components/onboarding/components/EvaluatorsOnboardingView/EvaluatorsOnboardingView.tsx
++++ b/web/src/components/onboarding/components/EvaluatorsOnboardingView/EvaluatorsOnboardingView.tsx
+@@ -47,7 +47,7 @@
+         description={
+           <>
+             Use evaluators to score traces and observations automatically.
+-            Langfuse supports two evaluator types:
++            Algomotive Observability supports two evaluator types:
+             <ul className="text-muted-foreground mx-auto mt-2 max-w-2xl list-disc space-y-2 pl-5 text-left text-sm">
+               <li>
+                 <span className="text-foreground font-bold">
+--- a/web/src/components/table/use-cases/observations.tsx
++++ b/web/src/components/table/use-cases/observations.tsx
+@@ -956,7 +956,7 @@
+       accessorKey: "promptName",
+       header: "Prompt",
+       headerTooltip: {
+-        description: "Link to prompt version in Langfuse prompt management.",
++        description: "Link to prompt version in Algomotive Observability prompt management.",
+         href: "https://langfuse.com/docs/prompt-management/get-started",
+       },
+       size: 200,
+--- a/web/src/components/ui/resizable-image.tsx
++++ b/web/src/components/ui/resizable-image.tsx
+@@ -106,7 +106,7 @@
+     );
+   }
+
+-  const displayError = `Cannot load image. ${src.includes("http") ? "Http images are not rendered in Langfuse for security reasons" : "Invalid image URL"}`;
++  const displayError = `Cannot load image. ${src.includes("http") ? "Http images are not rendered in Algomotive Observability for security reasons" : "Invalid image URL"}`;
+
+   return (
+     <div
+--- a/web/src/ee/features/audit-log-viewer/AuditLogsTable.tsx
++++ b/web/src/ee/features/audit-log-viewer/AuditLogsTable.tsx
+@@ -68,7 +68,7 @@
+       accessorKey: "actor",
+       header: "Actor",
+       headerTooltip: {
+-        description: "The actor within Langfuse who performed the action.",
++        description: "The actor within Algomotive Observability who performed the action.",
+       },
+       cell: (row) => {
+         const actor = row.getValue() as AuditLogRow["actor"];
+--- a/web/src/features/ai-gateway/components/GatewayConfigurationPage/components/GatewayConfigurationView/GatewayConfigurationView.tsx
++++ b/web/src/features/ai-gateway/components/GatewayConfigurationPage/components/GatewayConfigurationView/GatewayConfigurationView.tsx
+@@ -105,7 +105,7 @@
+         <Header title="AI Gateway configuration" />
+         <p className="text-muted-foreground text-sm">
+           Configure how requests routed through the organization gateway are
+-          ingested into Langfuse.
++          ingested into Algomotive Observability.
+         </p>
+       </div>
+
+--- a/web/src/features/auth-credentials/components/ResetPasswordPage.tsx
++++ b/web/src/features/auth-credentials/components/ResetPasswordPage.tsx
+@@ -162,7 +162,7 @@
+   return (
+     <>
+       <Head>
+-        <title>{pageTitle} | Langfuse</title>
++        <title>{pageTitle} | Algomotive Observability</title>
+       </Head>
+       <div className="flex flex-1 flex-col py-6 sm:min-h-full sm:justify-center sm:px-6 sm:py-12 lg:px-8">
+         <div className="sm:mx-auto sm:w-full sm:max-w-md">
+--- a/web/src/features/automations/components/actions/WebhookActionForm.tsx
++++ b/web/src/features/automations/components/actions/WebhookActionForm.tsx
+@@ -49,7 +49,7 @@
+         },
+         {
+           message:
+-            "This header is automatically added by Langfuse and cannot be customized",
++            "This header is automatically added by Algomotive Observability and cannot be customized",
+         },
+       ),
+       value: z.string(),
+@@ -138,7 +138,7 @@
+         {/* Default Headers Section */}
+         <div className="mb-4">
+           <FormDescription className="mb-2">
+-            Default headers (automatically added by Langfuse):
++            Default headers (automatically added by Algomotive Observability):
+           </FormDescription>
+           {Object.entries({
+             ...WebhookDefaultHeaders,
+--- a/web/src/features/automations/components/actions/WebhookActionHandler.tsx
++++ b/web/src/features/automations/components/actions/WebhookActionHandler.tsx
+@@ -137,7 +137,7 @@
+             WebhookProtectedHeaders.includes(header.name.trim().toLowerCase())
+           ) {
+             errors.push(
+-              `Header ${index + 1}: "${header.name}" is automatically added by Langfuse and cannot be customized`,
++              `Header ${index + 1}: "${header.name}" is automatically added by Algomotive Observability and cannot be customized`,
+             );
+           }
+         }
+--- a/web/src/features/dashboard/DashboardDetailPage.tsx
++++ b/web/src/features/dashboard/DashboardDetailPage.tsx
+@@ -1191,7 +1191,7 @@
+                     title:
+                       (dashboard.data?.name || "Dashboard") +
+                       (dashboard.data?.owner === "LANGFUSE"
+-                        ? " (Langfuse Maintained)"
++                        ? " (Algomotive Observability Maintained)"
+                         : ""),
+                     titleContent:
+                       hasCUDAccess && dashboard.data ? (
+--- a/web/src/features/dashboard/components/CloneFirstDialogController.tsx
++++ b/web/src/features/dashboard/components/CloneFirstDialogController.tsx
+@@ -176,7 +176,7 @@
+             <span className="text-foreground font-bold">
+               &ldquo;{dashboardName}&rdquo;
+             </span>{" "}
+-            is maintained by Langfuse and can&rsquo;t be edited directly.
++            is maintained by Algomotive Observability and can&rsquo;t be edited directly.
+             We&rsquo;ll create your own editable copy in this project
+             {pendingDefinition ? " with your change applied" : ""}
+             {setAsHome ? " and show it on your Home page from now on" : ""}.
+--- a/web/src/features/evals/components/evaluator-selector.tsx
++++ b/web/src/features/evals/components/evaluator-selector.tsx
+@@ -231,7 +231,7 @@
+
+         {filteredTemplates.langfuse.length > 0 && (
+           <>
+-            <InputCommandGroup heading="Langfuse managed evaluators">
++            <InputCommandGroup heading="Algomotive Observability-managed evaluators">
+               {filteredTemplates.langfuse.map((template) => {
+                 const isInvalid = isTemplateInvalid(template);
+
+--- a/web/src/features/evals/components/template-selector.tsx
++++ b/web/src/features/evals/components/template-selector.tsx
+@@ -287,7 +287,7 @@
+
+                 {filteredTemplates.langfuse.length > 0 && (
+                   <InputCommandGroup
+-                    heading="Langfuse managed evaluators"
++                    heading="Algomotive Observability-managed evaluators"
+                     className="max-h-full min-h-0"
+                   >
+                     {filteredTemplates.langfuse.map(([familyKey, template]) => {
+--- a/web/src/features/evals/components/variable-mapping-card.tsx
++++ b/web/src/features/evals/components/variable-mapping-card.tsx
+@@ -357,7 +357,7 @@
+                               <div className="flex min-w-0 items-start gap-2">
+                                 <VariableMappingDescription
+                                   title="Object"
+-                                  description="Langfuse object to retrieve the data from."
++                                  description="Algomotive Observability object to retrieve the data from."
+                                   href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"
+                                 />
+                                 <FormItem className="min-w-0 flex-1">
+@@ -418,7 +418,7 @@
+                                   <div className="flex min-w-0 items-start gap-2">
+                                     <VariableMappingDescription
+                                       title="Object Name"
+-                                      description="Name of the Langfuse object to retrieve the data from."
++                                      description="Name of the Algomotive Observability object to retrieve the data from."
+                                       href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"
+                                     />
+                                     <FormItem className="min-w-0 flex-1">
+@@ -514,7 +514,7 @@
+                               <div className="flex min-w-0 items-start gap-2">
+                                 <VariableMappingDescription
+                                   title="Object Field"
+-                                  description="Field on the Langfuse object to insert into the template."
++                                  description="Field on the Algomotive Observability object to insert into the template."
+                                   href="https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge"
+                                 />
+                                 <FormItem className="min-w-0 flex-1">
+--- a/web/src/features/evals/hooks/useEvaluatorTableData.ts
++++ b/web/src/features/evals/hooks/useEvaluatorTableData.ts
+@@ -131,8 +131,8 @@
+             ? jobConfig.evalTemplate.projectId
+               ? "User maintained"
+               : jobConfig.evalTemplate.name.startsWith(RAGAS_TEMPLATE_PREFIX)
+-                ? "Langfuse and Ragas maintained"
+-                : "Langfuse maintained"
++                ? "Algomotive Observability and Ragas maintained"
++                : "Algomotive Observability-maintained"
+             : "Not available",
+           totalCost: costData,
+           isLegacy: requiresLegacyMigrationAction({
+--- a/web/src/features/evals/utils/typeHelpers.ts
++++ b/web/src/features/evals/utils/typeHelpers.ts
+@@ -17,7 +17,7 @@
+     if (evalTemplate.partner) {
+       return `${getPartnerName(evalTemplate.partner)} maintained`;
+     }
+-    return "Langfuse maintained";
++    return "Algomotive Observability-maintained";
+   }
+   return "User maintained";
+ };
+--- a/web/src/features/events/components/EventsTable.tsx
++++ b/web/src/features/events/components/EventsTable.tsx
+@@ -1504,7 +1504,7 @@
+       accessorKey: "promptName",
+       header: getEventsColumnName("promptName"),
+       headerTooltip: {
+-        description: "Link to prompt version in Langfuse prompt management.",
++        description: "Link to prompt version in Algomotive Observability prompt management.",
+         href: "https://langfuse.com/docs/prompt-management/get-started",
+       },
+       size: 200,
+--- a/web/src/features/events/components/V4IntroDialog.tsx
++++ b/web/src/features/events/components/V4IntroDialog.tsx
+@@ -19,13 +19,13 @@
+     <Dialog open={open} onOpenChange={(o) => !o && onDismiss()}>
+       <DialogContent
+         className="[&>div:last-child]:hidden"
+-        aria-label="Welcome to a faster Langfuse"
++        aria-label="Welcome to a faster Algomotive Observability"
+       >
+         <DialogBody>
+           {/* eslint-disable-next-line @next/next/no-img-element */}
+           <img
+             src="/assets/v4-beta-intro.jpg"
+-            alt="Langfuse gets Faster — performance comparison showing 5x to 165x speedups"
++            alt="Algomotive Observability gets Faster — performance comparison showing 5x to 165x speedups"
+             className="w-full rounded-md"
+           />
+           <ul className="flex flex-col gap-3">
+--- a/web/src/features/experiments/components/CreateExperimentsForm.tsx
++++ b/web/src/features/experiments/components/CreateExperimentsForm.tsx
+@@ -231,7 +231,7 @@
+               <CardContent>
+                 <ul className="text-muted-foreground list-disc space-y-2 pl-4 text-sm">
+                   <li>Run custom evaluation logic in your service</li>
+-                  <li>Keep experiment results in Langfuse</li>
++                  <li>Keep experiment results in Algomotive Observability</li>
+                 </ul>
+                 {!fixedDatasetId ? (
+                   <div className="mt-4 space-y-2">
+--- a/web/src/features/experiments/components/RemoteExperimentUpsertForm.tsx
++++ b/web/src/features/experiments/components/RemoteExperimentUpsertForm.tsx
+@@ -177,7 +177,7 @@
+       if (!name) continue;
+       if (WebhookProtectedHeaders.includes(name.toLowerCase())) {
+         form.setError(`headers.${index}.name`, {
+-          message: `"${name}" is set by Langfuse and cannot be overridden`,
++          message: `"${name}" is set by Algomotive Observability and cannot be overridden`,
+         });
+         return;
+       }
+@@ -278,7 +278,7 @@
+           </strong>
+           . Configure a webhook URL to trigger remote custom experiments from
+           UI. We will send dataset info (name, id) and config to your service,
+-          which can run against the dataset and post results to Langfuse.
++          which can run against the dataset and post results to Algomotive Observability.
+         </DialogDescription>
+       </DialogHeader>
+
+--- a/web/src/features/in-app-agent/components/InAppAgentDisabledDialog.tsx
++++ b/web/src/features/in-app-agent/components/InAppAgentDisabledDialog.tsx
+@@ -31,7 +31,7 @@
+               onOpenChange(false);
+             }}
+           >
+-            The Langfuse Assistant requires AI features to be enabled for this
++            The Algomotive Observability Assistant requires AI features to be enabled for this
+             organization.
+           </AIFeaturesDisabledNotice>
+         </DialogBody>
+--- a/web/src/features/in-app-agent/components/InAppAgentWidgetComposer.tsx
++++ b/web/src/features/in-app-agent/components/InAppAgentWidgetComposer.tsx
+@@ -71,7 +71,7 @@
+     >
+       <div className="flex items-center gap-2 font-bold">
+         <Sparkles className="h-4 w-4" />
+-        Add with Langfuse Assistant
++        Add with Algomotive Observability Assistant
+       </div>
+       <p className="text-muted-foreground text-xs">
+         Describe the chart you need. The Assistant will create it as a widget
+@@ -97,7 +97,7 @@
+           size="icon"
+           className="h-8 w-8 shrink-0 rounded-md border"
+           variant="outline"
+-          aria-label="Add with Langfuse Assistant"
++          aria-label="Add with Algomotive Observability Assistant"
+           disabled={!request.trim()}
+         >
+           <SendHorizontal className="h-4 w-4" />
+--- a/web/src/features/in-app-agent/components/InAppAgentWindow.tsx
++++ b/web/src/features/in-app-agent/components/InAppAgentWindow.tsx
+@@ -132,7 +132,7 @@
+   return (
+     <>
+       <p className="text-foreground mt-3 text-sm font-bold">
+-        Welcome to the Langfuse Assistant
++        Welcome to the Algomotive Observability Assistant
+       </p>
+       <p className="text-muted-foreground mt-1 max-w-xs text-center text-xs leading-relaxed">
+         What do you want to do?
+--- a/web/src/features/in-app-agent/components/utils/utils.ts
++++ b/web/src/features/in-app-agent/components/utils/utils.ts
+@@ -176,7 +176,7 @@
+   label: string;
+ } {
+   if (isInAppAgentDocsToolName(toolName)) {
+-    return { source: "docs", label: "Reading Langfuse docs" };
++    return { source: "docs", label: "Reading Algomotive Observability docs" };
+   }
+
+   if (isInAppAgentSkillToolName(toolName)) {
+--- a/web/src/features/in-app-agent/quickActions.ts
++++ b/web/src/features/in-app-agent/quickActions.ts
+@@ -134,7 +134,7 @@
+       description: "Add a new prompt to prompt management",
+       icon: FilePlus,
+       prompt:
+-        "Help me create a new prompt in Langfuse prompt management, including choosing between a text and chat prompt, defining its variables, and setting a label.",
++        "Help me create a new prompt in Algomotive Observability prompt management, including choosing between a text and chat prompt, defining its variables, and setting a label.",
+     },
+     {
+       id: "find-prompts-to-improve",
+--- a/web/src/features/notifications/ErrorNotification.tsx
++++ b/web/src/features/notifications/ErrorNotification.tsx
+@@ -73,7 +73,7 @@
+               setOpen(true);
+             }}
+           >
+-            Report issue to Langfuse team
++            Report issue to Algomotive Observability team
+           </Button>
+         )}
+       </div>
+--- a/web/src/features/onboarding/components/OnboardingSurvey.tsx
++++ b/web/src/features/onboarding/components/OnboardingSurvey.tsx
+@@ -130,7 +130,7 @@
+                           <FormLabel>Enable AI powered features</FormLabel>
+                           <p className="text-muted-foreground text-sm">
+                             Relevant project data can be sent to AWS Bedrock
+-                            within your Langfuse data region. Your data will not
++                            within your Algomotive Observability data region. Your data will not
+                             be used for training models.{" "}
+                             <a
+                               href="https://langfuse.com/security/ai-features"
+--- a/web/src/features/organizations/components/ProjectOverview.tsx
++++ b/web/src/features/organizations/components/ProjectOverview.tsx
+@@ -170,11 +170,11 @@
+   return (
+     <Card>
+       <CardHeader>
+-        <CardTitle>Try Langfuse Demo</CardTitle>
++        <CardTitle>Try Algomotive Observability Demo</CardTitle>
+       </CardHeader>
+       <CardContent>
+         We have built a Q&A chatbot that answers questions based on the Langfuse
+-        Docs. Interact with it to see traces in Langfuse.
++        Docs. Interact with it to see traces in Algomotive Observability.
+       </CardContent>
+       <CardFooter>
+         <Button asChild variant="secondary">
+--- a/web/src/features/payment-banner/PaymentBannerView.tsx
++++ b/web/src/features/payment-banner/PaymentBannerView.tsx
+@@ -57,7 +57,7 @@
+         <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 sm:mt-0" />
+         <p className="min-w-0 text-sm wrap-break-word">
+           <span className="font-bold">Billing Issue:</span>{" "}
+-          {`We have problems collecting subscription payment for your organization '${organizationName}'. Please update your payment information to continue using Langfuse.`}
++          {`We have problems collecting subscription payment for your organization '${organizationName}'. Please update your payment information to continue using Algomotive Observability.`}
+         </p>
+       </div>
+       <Button
+--- a/web/src/features/prompts/components/prompt-new.tsx
++++ b/web/src/features/prompts/components/prompt-new.tsx
+@@ -63,7 +63,7 @@
+     >
+       {initialPrompt ? (
+         <p className="text-muted-foreground text-sm">
+-          Prompts are immutable in Langfuse. To update a prompt, create a new
++          Prompts are immutable in Algomotive Observability. To update a prompt, create a new
+           version.
+         </p>
+       ) : null}
+--- a/web/src/features/public-api/components/CreateLLMApiKeyForm.tsx
++++ b/web/src/features/public-api/components/CreateLLMApiKeyForm.tsx
+@@ -761,7 +761,7 @@
+                   <FormItem>
+                     <FormLabel>Provider name</FormLabel>
+                     <FormDescription>
+-                      Key to identify the connection within Langfuse. Cannot
++                      Key to identify the connection within Algomotive Observability. Cannot
+                       contain colons.
+                     </FormDescription>
+                     <FormControl>
+@@ -1340,7 +1340,7 @@
+                             <FormLabel>Enable default models</FormLabel>
+                             <FormDescription>
+                               Default models for the selected adapter will be
+-                              available in Langfuse features.
++                              available in Algomotive Observability features.
+                             </FormDescription>
+                           </span>
+
+--- a/web/src/features/setup/components/TracesSetupOnboardingCard.tsx
++++ b/web/src/features/setup/components/TracesSetupOnboardingCard.tsx
+@@ -15,7 +15,7 @@
+ import { toast } from "sonner";
+
+ const SKILLS_INSTALL_COMMAND =
+-  "Install the Langfuse AI skill from github.com/langfuse/skills and use it to add tracing to this application with Langfuse following best practices.";
++  "Install the Algomotive Observability AI skill from github.com/langfuse/skills and use it to add tracing to this application with Algomotive Observability following best practices.";
+ const MANUAL_TRACING_DOCS_URL =
+   "https://langfuse.com/docs/observability/get-started";
+
+--- a/web/src/features/support-chat/SupportForm.tsx
++++ b/web/src/features/support-chat/SupportForm.tsx
+@@ -296,7 +296,7 @@
+   return (
+     <ConfirmationDialogController
+       title="Confirm Severity 1 (Critical Business Impact)"
+-      text="Please confirm that your issue has critical business impact. This means it severely impacts your use of Langfuse in production, such as loss of production data, ingestion issues, or prompt fetching issues."
++      text="Please confirm that your issue has critical business impact. This means it severely impacts your use of Algomotive Observability in production, such as loss of production data, ingestion issues, or prompt fetching issues."
+       confirmLabel="Confirm & Submit"
+       variant="default"
+       loading={isSubmittingLocal}
+--- a/web/src/features/support-chat/pylon/pylonClient.ts
++++ b/web/src/features/support-chat/pylon/pylonClient.ts
+@@ -210,7 +210,7 @@
+     `<li>steps to reproduce (if relevant)</li>`,
+     `</ul>`,
+     `<p>Thanks,</p>`,
+-    `<p>Team Langfuse</p>`,
++    `<p>Team Algomotive</p>`,
+     `<hr>`,
+     `<p><b>${escapedEmail} wrote:</b></p>`,
+     `<blockquote>${escapedMessage.replace(/\n/g, "<br>")}</blockquote>`,
+--- a/web/src/features/users/UsersPage.tsx
++++ b/web/src/features/users/UsersPage.tsx
+@@ -110,7 +110,7 @@
+         help: {
+           description: (
+             <>
+-              Attribute data in Langfuse to a user by adding a userId to your
++              Attribute data in Algomotive Observability to a user by adding a userId to your
+               traces. See{" "}
+               <a
+                 href="https://langfuse.com/docs/observability/features/users"
+@@ -458,7 +458,7 @@
+       header: "User ID",
+       headerTooltip: {
+         description:
+-          "The unique identifier for the user that was logged in Langfuse. See docs for more details on how to set this up.",
++          "The unique identifier for the user that was logged in Algomotive Observability. See docs for more details on how to set this up.",
+         href: "https://langfuse.com/docs/observability/features/users",
+       },
+       size: 150,
+--- a/web/src/features/web-callouts/components/WebCalloutSettingsPage.tsx
++++ b/web/src/features/web-callouts/components/WebCalloutSettingsPage.tsx
+@@ -92,7 +92,7 @@
+       if (WEB_CALLOUT_BLOCKED_HEADER_NAMES.has(lowerName)) {
+         ctx.addIssue({
+           code: "custom",
+-          message: "This header is set by Langfuse and cannot be customized.",
++          message: "This header is set by Algomotive Observability and cannot be customized.",
+           path: ["headers", index, "name"],
+         });
+       }
+--- a/web/src/features/widgets/components/CopyWidgetDialog.tsx
++++ b/web/src/features/widgets/components/CopyWidgetDialog.tsx
+@@ -46,7 +46,7 @@
+             <span className="text-foreground font-bold">
+               &ldquo;{widgetName}&rdquo;
+             </span>{" "}
+-            is maintained by Langfuse and can&rsquo;t be edited directly.
++            is maintained by Algomotive Observability and can&rsquo;t be edited directly.
+             We&rsquo;ll replace this tile with your own editable copy and open
+             it in the widget editor — the rest of the dashboard stays unchanged.
+           </p>
+--- a/web/src/features/widgets/components/DashboardWidget.tsx
++++ b/web/src/features/widgets/components/DashboardWidget.tsx
+@@ -630,7 +630,7 @@
+             <Badge
+               variant="secondary"
+               className="shrink-0"
+-              title="Maintained by Langfuse — editing creates your own copy"
++              title="Maintained by Algomotive Observability — editing creates your own copy"
+             >
+               Langfuse
+             </Badge>
+--- a/web/src/pages/auth/enterprise-sso-required.tsx
++++ b/web/src/pages/auth/enterprise-sso-required.tsx
+@@ -145,7 +145,7 @@
+   return (
+     <>
+       <Head>
+-        <title>Enterprise SSO Required | Langfuse</title>
++        <title>Enterprise SSO Required | Algomotive Observability</title>
+       </Head>
+       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+         <div className="sm:mx-auto sm:w-full sm:max-w-md">
+--- a/web/src/pages/auth/sso-initiate.tsx
++++ b/web/src/pages/auth/sso-initiate.tsx
+@@ -44,7 +44,7 @@
+     return (
+       <>
+         <Head>
+-          <title>Sign-in Error | Langfuse</title>
++          <title>Sign-in Error | Algomotive Observability</title>
+         </Head>
+         <ErrorPageWithSentry title="SSO Sign-in Failed" message={error} />
+       </>
+@@ -55,7 +55,7 @@
+   return (
+     <>
+       <Head>
+-        <title>Signing in | Langfuse</title>
++        <title>Signing in | Algomotive Observability</title>
+       </Head>
+       <Spinner message="Redirecting to your identity provider..." />
+     </>
+--- a/web/src/pages/onboarding.tsx
++++ b/web/src/pages/onboarding.tsx
+@@ -7,7 +7,7 @@
+   return (
+     <>
+       <Head>
+-        <title>Onboarding | Langfuse</title>
++        <title>Onboarding | Algomotive Observability</title>
+       </Head>
+       <ConnectedOnboardingSurvey />
+     </>
+--- a/web/src/pages/project/[projectId]/datasets/index.tsx
++++ b/web/src/pages/project/[projectId]/datasets/index.tsx
+@@ -36,7 +36,7 @@
+           title: "Datasets",
+           help: {
+             description:
+-              "Datasets in Langfuse are a collection of inputs (and expected outputs) of an LLM application. They are used to benchmark new releases before deployment to production. See docs to learn more.",
++              "Datasets in Algomotive Observability are a collection of inputs (and expected outputs) of an LLM application. They are used to benchmark new releases before deployment to production. See docs to learn more.",
+             href: "https://langfuse.com/docs/evaluation/dataset-runs/datasets",
+           },
+         }}
+@@ -53,7 +53,7 @@
+         title: "Datasets",
+         help: {
+           description:
+-            "Datasets in Langfuse are a collection of inputs (and expected outputs) of an LLM application. They are used to benchmark new releases before deployment to production. See docs to learn more.",
++            "Datasets in Algomotive Observability are a collection of inputs (and expected outputs) of an LLM application. They are used to benchmark new releases before deployment to production. See docs to learn more.",
+           href: "https://langfuse.com/docs/evaluation/dataset-runs/datasets",
+         },
+         actionButtonsRight: (
+--- a/web/src/pages/project/[projectId]/traces/setup.tsx
++++ b/web/src/pages/project/[projectId]/traces/setup.tsx
+@@ -83,7 +83,7 @@
+         />
+         <p className="text-muted-foreground mb-4 text-sm">
+           Langfuse relies on OpenTelemetry to instrument your application and
+-          export LLM application/agent traces to Langfuse. You can use one of
++          export LLM application/agent traces to Algomotive Observability. You can use one of
+           our SDKs or 50+ framework integrations. Please follow the quickstart
+           in the documentation to add Langfuse to your application.
+         </p>

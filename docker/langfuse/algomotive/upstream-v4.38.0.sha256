@@ -1,0 +1,15 @@
+849192755a9b7a76d7b5158778b30d0e88830997629a52f67c9f2afe1e022812  docker/langfuse/algomotive/upstream-v4.38.0/components/design-system/LangfuseIcon/LangfuseIcon.tsx
+7823c3989c2b7b51d59a5073334ffb61c327df0b2092a33afacd65535a05339d  docker/langfuse/algomotive/upstream-v4.38.0/components/design-system/LangfuseLogo/LangfuseLogo.tsx
+fdeecfa9337ee333fbdd32a16218562fb70082f980fca335216336da9a462107  docker/langfuse/algomotive/upstream-v4.38.0/components/layouts/app-layout/hooks/useLayoutMetadata.ts
+8bb1b6bc75049f463b32db1423462e05cdc57e027d2a281955ae26c3bbcb1b0a  docker/langfuse/algomotive/upstream-v4.38.0/components/layouts/routes.tsx
+1666cb5cc4fbabba683f22e08b1c5d9c71a284fe3db700a7492d60f61a41759a  docker/langfuse/algomotive/upstream-v4.38.0/components/nav/AppSidebar/AppSidebar.tsx
+0916b449b8565e901edb038a9d1759136588889cd1d89ae879a08c17a80ccc38  docker/langfuse/algomotive/upstream-v4.38.0/components/nav/AppSidebar/utils.ts
+f99b2c08cd4c2cc0fd920d5468a432d57da930b25d830eb0c64c94e59842c15d  docker/langfuse/algomotive/upstream-v4.38.0/components/nav/book-a-call-button.tsx
+27bbef8dd7e7347c378941c75d12500359884808b3710621a85c17d99855c07a  docker/langfuse/algomotive/upstream-v4.38.0/components/nav/support-button.tsx
+c407c351502c844e90a416346aedc30f9837248f861cdf271eeb073b8ffd637a  docker/langfuse/algomotive/upstream-v4.38.0/components/nav/topbar-brand.tsx
+b024fca05743104d2879a587c41596af5b6c000d9cb3ab6493525593261f115b  docker/langfuse/algomotive/upstream-v4.38.0/features/auth/SignInPage.tsx
+a2a12f823f70243432351dc9c868d5f48fedec2c508d57417bf123573490f364  docker/langfuse/algomotive/upstream-v4.38.0/features/auth/lib/signOut.ts
+9941da7c6a59f9cf162bbb92577fc060a20c8a163170f3672e386e777ca2f6a9  docker/langfuse/algomotive/upstream-v4.38.0/features/dashboard/components/DashboardTable.tsx
+1a99a85322e7bb1824e3de089f1130b80ac62d790ebcc98b393e0cade00ba1b3  docker/langfuse/algomotive/upstream-v4.38.0/features/developer-tools/components/AgentToolsBanner.tsx
+4789cd59265055d617eda37d66ac4c5cd0ef0ea279414470c37773a345d6bd20  docker/langfuse/algomotive/upstream-v4.38.0/features/organizations/components/ProjectOverview.tsx
+94fea21bd6d12691bf975d8d2701973de899c68127724d6d43cd11d731148a6d  docker/langfuse/algomotive/upstream-v4.38.0/features/version-update/VersionUpdateBannerView.tsx
